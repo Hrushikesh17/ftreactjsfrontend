@@ -1,0 +1,13 @@
+name: Ping Render.com Server Every 10 Minutes
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+
+jobs:
+  ping-render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send request to Render server
+        run: |
+          curl -sSf https://freetree-m2zy.onrender.com/ || echo "Request failed"
